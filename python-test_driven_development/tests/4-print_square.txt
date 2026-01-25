@@ -1,8 +1,3 @@
-#!/usr/bin/python3
-"""
-Test cases for the print_square function in 4-print_square.py.
-"""
-
 >>> from 4-print_square import print_square
 
 # Test valid sizes
