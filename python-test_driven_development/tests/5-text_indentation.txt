@@ -1,0 +1,37 @@
+>>> from 5-text_indentation import text_indentation
+
+# Test normal text
+>>> text_indentation("Hello. How are you? I am fine: Thanks.")
+Hello.
+
+How are you?
+
+I am fine:
+
+Thanks.
+
+# Test multiple punctuation
+>>> text_indentation("Wait... What? Really:Yes.")
+Wait.
+
+.
+
+.
+
+What?
+
+Really:
+
+Yes.
+
+# Test spaces
+>>> text_indentation("  Hello  .  World : ")
+Hello.
+
+World:
+
+# Test invalid type
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
