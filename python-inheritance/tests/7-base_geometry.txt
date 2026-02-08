@@ -1,0 +1,15 @@
+>>> from 7-base_geometry import BaseGeometry
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+>>> bg.integer_validator("height", 10)
+>>> bg.integer_validator("width", -5)
+Traceback (most recent call last):
+...
+ValueError: width must be greater than 0
+>>> bg.integer_validator("size", "10")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
