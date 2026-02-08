@@ -12,3 +12,8 @@
 >>> empty_list.append(0)
 >>> empty_list.print_sorted()
 [0, 10]
+>>> neg_list = MyList([-3, 1, -5, 2])
+>>> neg_list.print_sorted()
+[-5, -3, 1, 2]
+>>> print(neg_list)
+[-3, 1, -5, 2]
