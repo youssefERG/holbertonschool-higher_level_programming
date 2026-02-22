@@ -2,7 +2,7 @@
 """Module that defines Shape abstract class and its implementations."""
 
 from abc import ABC, abstractmethod
-from math import pi
+import math
 
 
 class Shape(ABC):
@@ -11,12 +11,12 @@ class Shape(ABC):
     @abstractmethod
     def area(self):
         """Return the area of the shape."""
-        raise NotImplementedError("area() is not implemented")
+        pass
 
     @abstractmethod
     def perimeter(self):
         """Return the perimeter of the shape."""
-        raise NotImplementedError("perimeter() is not implemented")
+        pass
 
 
 class Circle(Shape):
@@ -28,11 +28,11 @@ class Circle(Shape):
 
     def area(self):
         """Return the area of the circle."""
-        return pi * self.radius ** 2
+        return math.pi * (self.radius ** 2)
 
     def perimeter(self):
         """Return the perimeter of the circle."""
-        return 2 * pi * self.radius
+        return 2 * math.pi * self.radius
 
 
 class Rectangle(Shape):
@@ -54,5 +54,12 @@ class Rectangle(Shape):
 
 def shape_info(shape):
     """Print the area and perimeter of a shape."""
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    print("Area: {}".format(shape.area()))
+    print("Perimeter: {}".format(shape.perimeter()))
+
+
+if __name__ == "__main__":
+    c = Circle(5)
+    r = Rectangle(4, 3)
+    shape_info(c)
+    shape_info(r)
