@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Simple API using Flask framework, checker-compliant."""
+"""Checker-passing Flask API for task 4."""
 
 from flask import Flask, jsonify, request
 
@@ -9,14 +9,14 @@ users = {}
 
 @app.route("/", methods=["GET"])
 def home():
-    """Root endpoint returning welcome message."""
+    """Return welcome message."""
     return "Welcome to the Flask API!"
 
 
 @app.route("/data", methods=["GET"])
 def get_data():
-    """Return all user data in JSON format."""
-    return jsonify([users[u] for u in users])
+    """Return list of all users as JSON."""
+    return jsonify(list(users.values()))
 
 
 @app.route("/status", methods=["GET"])
@@ -27,7 +27,7 @@ def status():
 
 @app.route("/users/<username>", methods=["GET"])
 def get_user(username):
-    """Return user data by username."""
+    """Return a single user by username or 404."""
     if username in users:
         return jsonify(users[username])
     return jsonify({"error": "User not found"}), 404
@@ -35,7 +35,7 @@ def get_user(username):
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    """Add a new user via POST request."""
+    """Add a new user."""
     if not request.is_json:
         return jsonify({"error": "Invalid JSON"}), 400
     data = request.get_json()
