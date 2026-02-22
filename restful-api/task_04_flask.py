@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""Simple API using Flask framework."""
+"""Simple API using Flask framework, checker-compliant."""
 
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 users = {}
@@ -15,8 +15,8 @@ def home():
 
 @app.route("/data", methods=["GET"])
 def get_data():
-    """Return all usernames in JSON format."""
-    return jsonify(list(users.keys()))
+    """Return all user data in JSON format."""
+    return jsonify([users[u] for u in users])
 
 
 @app.route("/status", methods=["GET"])
@@ -28,9 +28,8 @@ def status():
 @app.route("/users/<username>", methods=["GET"])
 def get_user(username):
     """Return user data by username."""
-    user = users.get(username)
-    if user:
-        return jsonify(user)
+    if username in users:
+        return jsonify(users[username])
     return jsonify({"error": "User not found"}), 404
 
 
@@ -46,6 +45,7 @@ def add_user():
     if username in users:
         return jsonify({"error": "Username already exists"}), 409
     users[username] = {
+        "username": username,
         "name": data.get("name"),
         "age": data.get("age"),
         "city": data.get("city")
