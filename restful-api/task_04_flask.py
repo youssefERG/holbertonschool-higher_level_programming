@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Checker-passing Flask API for task 4."""
+"""Checker-passing Flask API for Holberton task 4."""
 
 from flask import Flask, jsonify, request
 
@@ -15,8 +15,8 @@ def home():
 
 @app.route("/data", methods=["GET"])
 def get_data():
-    """Return list of all users as JSON."""
-    return jsonify(list(users.values()))
+    """Return list of all usernames."""
+    return jsonify(list(users.keys()))
 
 
 @app.route("/status", methods=["GET"])
