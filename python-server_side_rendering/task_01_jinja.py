@@ -3,27 +3,41 @@ from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
+base_header = """
+<header>
+    <h1>My Flask App</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </nav>
+</header>
+"""
+
+base_footer = """
+<footer>
+    <p>&copy; 2024 My Flask App</p>
+</footer>
+"""
+
 index_html = """<!doctype html>
 <html lang="en">
 <head>
     <title>My Flask App</title>
 </head>
 <body>
-    <header>
-        <h1>My Flask App</h1>
-    </header>
-    <h1>Welcome to My Flask App</h1>
-    <p>This is a simple Flask application.</p>
-    <ul>
-        <li>Flask</li>
-        <li>HTML</li>
-        <li>Templates</li>
-    </ul>
-    <footer>
-        <p>&copy; 2024 My Flask App</p>
-    </footer>
+""" + base_header + """
+<h1>Welcome to My Flask App</h1>
+<p>This is a simple Flask application.</p>
+<ul>
+    <li>Flask</li>
+    <li>HTML</li>
+    <li>Templates</li>
+</ul>
+""" + base_footer + """
 </body>
-</html>"""
+</html>
+"""
 
 about_html = """<!doctype html>
 <html lang="en">
@@ -31,16 +45,13 @@ about_html = """<!doctype html>
     <title>About</title>
 </head>
 <body>
-    <header>
-        <h1>My Flask App</h1>
-    </header>
-    <h1>About Us</h1>
-    <p>This page contains information about us.</p>
-    <footer>
-        <p>&copy; 2024 My Flask App</p>
-    </footer>
+""" + base_header + """
+<h1>About Us</h1>
+<p>This page contains information about us.</p>
+""" + base_footer + """
 </body>
-</html>"""
+</html>
+"""
 
 contact_html = """<!doctype html>
 <html lang="en">
@@ -48,16 +59,13 @@ contact_html = """<!doctype html>
     <title>Contact</title>
 </head>
 <body>
-    <header>
-        <h1>My Flask App</h1>
-    </header>
-    <h1>Contact Us</h1>
-    <p>This page contains contact information.</p>
-    <footer>
-        <p>&copy; 2024 My Flask App</p>
-    </footer>
+""" + base_header + """
+<h1>Contact Us</h1>
+<p>This page contains contact information.</p>
+""" + base_footer + """
 </body>
-</html>"""
+</html>
+"""
 
 
 @app.route('/')
