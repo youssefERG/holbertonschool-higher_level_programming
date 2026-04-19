@@ -1,1 +1,1 @@
-aaaaaaaa
+JavaScript is amazing
